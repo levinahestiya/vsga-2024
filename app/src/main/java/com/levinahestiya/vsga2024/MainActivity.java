@@ -20,5 +20,12 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        inputNama = findViewById(R.id.editText);
+        textNama = findViewById(R.id.textView);
+    }
+
+    public void showName(View view) {
+        textNama.setText(getString(R.string.nama_anda, inputNama.getText()));
     }
 }
