@@ -1,6 +1,9 @@
 package com.levinahestiya.vsga2024;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +12,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+
+    EditText inputNama;
+    TextView textNama;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
