@@ -2,6 +2,7 @@ package com.levinahestiya.vsga2024;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +14,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FloatingActionButton fab;
+    private MainAdapter adapter;
+    private DBHelper dbhelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +28,22 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        fab = findViewById(R.id.floatingActionButton);
+        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(v -> {
             Intent i = new Intent(MainActivity.this, TambahActivity.class);
             startActivity(i);
         });
+
+        dbhelper = new DBHelper(this);
+        ListView listView = findViewById(R.id.listView);
+        adapter = new MainAdapter(this);
+        listView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.clear();
+        adapter.addAll(dbhelper.getData());
     }
 }
